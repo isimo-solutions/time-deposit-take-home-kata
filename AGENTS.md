@@ -4,7 +4,7 @@ Use Codex with this repository as the working directory. Start each task by read
 
 ## Development and verification
 
-1. Run `mvn -f java/pom.xml test` from the repository root to establish a baseline for the Java calculator.
+1. Run `.\java\mvnw.cmd -f java/pom.xml test` from the repository root to establish a baseline for the Java calculator. On macOS or Linux, use `sh ./java/mvnw` with the same arguments.
 2. Make changes in focused increments. Prefer hexagonal architecture so interest rules can be tested independently of HTTP and database adapters.
 3. Rerun the Java tests after refactoring. Verify both endpoints and the persisted balance updates, preferably with database integration tests using Testcontainers.
 4. Provide an OpenAPI contract and document how to start the application and exercise both endpoints in Swagger.

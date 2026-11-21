@@ -85,3 +85,9 @@ Codex configured Docker Compose and Spring Boot to use Oracle XE locally. The ap
 > include starting the docker database in maven call using docker maven plugins to have the development environment started with one command line, if  db container is already started starting it should be skipped
 
 Codex added a Maven profile that runs Docker Compose before launching Spring Boot with its local profile. Compose preserves the running database between launches.
+
+## Maven Wrapper
+
+> remove the dependency on the maven installation creating mvnw\.cmd script. document it accordingly in HOWTO.md
+
+Codex generated the Apache Maven Wrapper for the Java module and documented wrapper-based startup. The wrapper pins Maven 3.9.11 and downloads it on the first run.

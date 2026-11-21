@@ -1,13 +1,19 @@
 # Run the API and open Swagger UI
 
-You need JDK 17, Maven, and Docker with Docker Compose and Linux containers enabled. Docker must be running to start the application because it uses Oracle XE. The app serves Swagger UI with the [OpenAPI contract](java/openapi.yaml).
+You need JDK 17 and Docker with Docker Compose and Linux containers enabled. Docker must be running to start Oracle XE. The Maven Wrapper downloads Maven 3.9.11 on first use and caches it for later runs. The first run needs internet access for Maven, its dependencies, and the Oracle image.
 
 ## Start the application
 
-From the repository root, run the app with the Maven `local` profile.
+From the repository root, run the app with the Maven `local` profile. On Windows, run:
+
+```powershell
+.\java\mvnw.cmd -f java/pom.xml -Plocal spring-boot:run
+```
+
+On macOS or Linux, run:
 
 ```sh
-mvn -f java/pom.xml -Plocal spring-boot:run
+sh ./java/mvnw -f java/pom.xml -Plocal spring-boot:run
 ```
 
 Maven runs Docker Compose and waits for Oracle XE to become healthy before starting Spring Boot with its `local` profile. If the Compose Oracle container is already running, Maven reuses it. The first run pulls `gvenzl/oracle-xe:21-slim-faststart`.

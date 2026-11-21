@@ -2,13 +2,13 @@
 
 ## Run the Java API
 
-With JDK 17, Maven, and Docker running in Linux container mode, run the following from the repository root.
+With JDK 17 and Docker running in Linux container mode, run the following from the repository root in Windows PowerShell.
 
-```sh
-mvn -f java/pom.xml -Plocal spring-boot:run
+```powershell
+.\java\mvnw.cmd -f java/pom.xml -Plocal spring-boot:run
 ```
 
-Open [Swagger UI](http://localhost:8080/index.html) to inspect the schemas and send requests in the browser. See [HOWTO.md](HOWTO.md) for the walkthrough.
+Open [Swagger UI](http://localhost:8080/index.html) to inspect the schemas and send requests in the browser. See [HOWTO.md](HOWTO.md) for the walkthrough and the macOS and Linux command.
 
 To exercise the running API from a terminal, run the following commands.
 
@@ -20,9 +20,9 @@ curl.exe http://localhost:8080/time-deposits
 
 The POST returns HTTP 204 and applies one monthly interest calculation per call. The app initializes an empty [Oracle schema](java/src/main/resources/schema.sql) on first startup. Docker Compose stores the database in a named volume. Load deposits and withdrawals through SQL to exercise the API with records.
 
-Start Docker with Linux containers enabled, then run `mvn -f java/pom.xml test`. The API integration tests start an Oracle XE container using `gvenzl/oracle-xe:21-slim-faststart`. The first run pulls the image.
+Start Docker with Linux containers enabled, then run `.\java\mvnw.cmd -f java/pom.xml test`. The API integration tests start an Oracle XE container using `gvenzl/oracle-xe:21-slim-faststart`. The first run pulls the image.
 
-Run the calculator unit test by itself with `mvn -f java/pom.xml -Dtest=TimeDepositCalculatorTest test`.
+Run the calculator unit test by itself with `.\java\mvnw.cmd -f java/pom.xml -Dtest=TimeDepositCalculatorTest test`.
 
 ## XA Bank Time Deposit
 
