@@ -1,0 +1,22 @@
+name: time-deposit
+
+services:
+  oracle:
+    image: gvenzl/oracle-xe:21-slim-faststart
+    environment:
+      ORACLE_RANDOM_PASSWORD: "yes"
+      APP_USER: time_deposit
+      APP_USER_PASSWORD: ${TIME_DEPOSIT_DB_PASSWORD:-time_deposit_dev}
+    ports:
+      - "127.0.0.1:1521:1521"
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+    healthcheck:
+      test: ["CMD", "healthcheck.sh"]
+      interval: 5s
+      timeout: 5s
+      retries: 36
+      start_period: 20s
+
+volumes:
+  oracle-data:
